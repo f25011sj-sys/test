@@ -1,11 +1,16 @@
 <html>
-  <head></head>
+  <head>
+    <meta name="robots" content="noindex" />
+  </head>
   <body>
     だｄｓｆｄｓふぁ
+    <p id="status">未ログイン</p>
+    <button id="login">Googleログイン</button>
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -24,6 +29,20 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+      document.getElementById("login").onclick = () => {
+        signInWithPopup(auth, provider);
+      };
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          document.getElementById("status").innerText =
+            "ログイン中: " + user.email;
+        } else {
+          document.getElementById("status").innerText =
+            "未ログイン";
+        }
+      });
     </script>
   </body>
 </html>
