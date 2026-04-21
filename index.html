@@ -40,7 +40,7 @@
       };
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          if (!user.email.endsWith("@shibaurafzk.com")) {
+          if (!user.email.endsWith("com")) {
             alert("このアカウントは使えません");
             await signOut(auth);
             return;
