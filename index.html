@@ -42,7 +42,7 @@
         if (user) {
           console.log("email:", user.email);
           console.log("check:", user.email.endsWith("@shibaurafzk.co"));
-          if (!user.email.endsWith("co")) {
+          if (!user.email.endsWith("@shibaurafzk.com")) {
             await signOut(auth);
             return;
           }
