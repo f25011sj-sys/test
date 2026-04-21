@@ -45,7 +45,7 @@
           get(child(dbRef, "value")).then((snapshot) => {
             if (snapshot.exists()) {
               document.getElementById("honpen").innerText =
-                snapshot.val().text;
+                snapshot.val();
             }
           });
         } else {
