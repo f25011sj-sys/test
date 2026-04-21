@@ -41,7 +41,7 @@
       onAuthStateChanged(auth, async (user) => {
         if (user) {
           console.log("email:", user.email);
-          console.log("check:", user.email.endsWith("@shibaurafzk.com"));*
+          console.log("check:", user.email.endsWith("@shibaurafzk.com"));
           if (!user.email.endsWith("com")) {
             await signOut(auth);
             return;
