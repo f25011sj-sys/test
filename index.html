@@ -41,7 +41,7 @@
         if (user) {
           document.getElementById("status").innerText =
             "ログイン中: " + user.email;
-          if(!user.email.endsWith("@shibaurafzk.com")) return;
+          if(!user.email.endsWith("@shibaurafzk.co")) return;
           const dbRef = ref(db);
           get(child(dbRef, "value")).then((snapshot) => {
             console.log("exists:", snapshot.exists());
