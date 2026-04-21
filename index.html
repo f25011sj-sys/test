@@ -40,6 +40,8 @@
       };
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          console.log("email:", user.email);
+          console.log("check:", user.email?.endsWith("@shibaurafzk.com"));
           if (!user.email.endsWith("com")) {
             alert("このアカウントは使えません");
             await signOut(auth);
