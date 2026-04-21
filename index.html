@@ -38,14 +38,14 @@
       document.getElementById("login").onclick = () => {
         signInWithPopup(auth, provider);
       };
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth, async (user) => {
         if (user) {
-          /*console.log("email:", user.email);
+          console.log("email:", user.email);
           console.log("check:", user.email.endsWith("@shibaurafzk.com"));*
           if (!user.email.endsWith("com")) {
             await signOut(auth);
             return;
-          }*/
+          }
           document.getElementById("status").innerText =
             "ログイン中: " + user.email;
           const dbRef = ref(db);
