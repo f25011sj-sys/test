@@ -3,8 +3,8 @@
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    だｄｓｆｄｓふぁ
-    <p id="status">未ログイン</p>
+    ログインしてな～
+    <div id="status">未ログイン</div>
     <button id="login">Googleログイン</button>
     <div id="honpen"></div>
     <script type="module">
@@ -41,6 +41,7 @@
         if (user) {
           document.getElementById("status").innerText =
             "ログイン中: " + user.email;
+          if(!user.email.endsWith("@shibaurafzk.com")) return;
           const dbRef = ref(db);
           get(child(dbRef, "value")).then((snapshot) => {
             console.log("exists:", snapshot.exists());
