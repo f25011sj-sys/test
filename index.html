@@ -13,6 +13,7 @@
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
       import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-database.js";
       import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+      import { signOut } from "firebase/auth";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -39,9 +40,13 @@
       };
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          if (!user.email.endsWith("@shibaurafzk.com")) {
+            alert("このアカウントは使えません");
+            await signOut(auth);
+            return;
+          }
           document.getElementById("status").innerText =
             "ログイン中: " + user.email;
-          if(!user.email.endsWith("@shibaurafzk.co")) return;
           const dbRef = ref(db);
           get(child(dbRef, "value")).then((snapshot) => {
             console.log("exists:", snapshot.exists());
